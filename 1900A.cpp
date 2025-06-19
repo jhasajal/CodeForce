@@ -58,26 +58,30 @@ template <typename T> void sort_(vector<T> &v) { sort(all(v)); }
 template <typename T> void sort_d(vector<T> &v) { sort(all(v), greater<T>()); }
 
 void solve() {
-    IO<int> io;
-    int n; io.r(n);
-    int d; io.r(d);
-    vi a;
-    a.pb(0); // Starting point at 0
-    for(int i=0; i<n; i++) {
-        int t; io.r(t);
-        a.pb(t);
-    };
-    int mx=0;
+    IO<char> io;
+    IO<int> in;
+    int n; in.r(n);
+    int cnt=0;
+    int ans=0;
+    bool flag=false;
 
-    rep(i, 0, n) {
-        mx=max(mx, a[i+1]-a[i]);
+    for(int i=0; i<n; i++){
+        char s; io.r(s);
+
+        if(s=='.'){
+            cnt++;
+            ans++;
+            // cout<< "ans: " << ans << endl;
+        }
+        else cnt=0; 
+        
+
+        if(cnt==3) flag=true;
     }
-    if(d>a[n-1]){
-        mx=max(mx,2*(d-a[n]));
-    }
 
-    cout << mx << endl;
-
+    if(flag) cout << 2 << endl;
+    else cout << ans << endl;
+    
     return;
 }
 
